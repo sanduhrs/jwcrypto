@@ -14,12 +14,12 @@ Overview
 
 JSON Web Tokens (JWTs) look like:
 
-   eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9
-   .
-   eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFt
-   cGxlLmNvbS9pc19yb290Ijp0cnVlfQ
-   .
-   dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+    eyJ0eXAiOiJKV1QiLA0KICJhbGciOiJIUzI1NiJ9
+    .
+    eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFt
+    cGxlLmNvbS9pc19yb290Ijp0cnVlfQ
+    .
+    dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
 
 (line breaks are for readability)
 
@@ -67,6 +67,11 @@ API
            // serialize it
            console.log(jws.toString());
         });
+
+        // also, if loading a secret key from somewhere
+        // note how JWK determines automatically if it's a secret key
+        // or public key. XXX should this be more explicit?
+        var otherSecretKey = jwcrypto.JWK.fromString(storedSecretKey);
 
         // parse a JWS
         var jws = jwcrypto.JWS.fromString(submittedJWS);
